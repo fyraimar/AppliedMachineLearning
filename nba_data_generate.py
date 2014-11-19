@@ -6,7 +6,7 @@ away_dict = {}
 total_game = {}
 win_dict = {}
 
-fieldnames = {'Season', 'Team', 'AboveHalf', 'Ratio'}
+fieldnames = {'Season', 'Team', 'AboveHalf', 'HomeWin', 'AwayWin'}
 
 with open(sys.argv[1], 'rb') as f:
     reader = csv.DictReader(f);
@@ -29,5 +29,5 @@ with open(sys.argv[2], 'wb') as f:
         else:
             out = 'False'
 
-        writer.writerow({'Season' : key[0], 'Team' : key[1], 'AboveHalf' : out, 'Ratio' : value})
+        writer.writerow({'Season' : key[0], 'Team' : key[1], 'AboveHalf' : out, 'HomeWin' : home_dict.get((key[0], key[1])), 'AwayWin' : away_dict.get((key[0], key[1]))})
 
